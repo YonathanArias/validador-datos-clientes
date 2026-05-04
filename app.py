@@ -3,6 +3,16 @@ import random
 import pandas as pd
 from datetime import datetime
 
+
+# ================= LOGIN =================
+
+USERS = {
+    "asesor1": "N1ub1z2026",
+    "asesor2": "N1ub1z2026",
+    "asesor3": "N1ub1z2026"
+}
+
+
 # ================= CONFIGURACIÓN =================
 
 st.set_page_config(
@@ -152,6 +162,29 @@ if "step" not in st.session_state:
     st.session_state.answers = []
     st.session_state.timestamp = None
     st.session_state.history = []
+
+
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+# ================= LOGIN SCREEN =================
+
+if not st.session_state.authenticated:
+    st.subheader("Inicio de sesión")
+
+    username = st.text_input("Usuario")
+    password = st.text_input("Contraseña", type="password")
+
+    if st.button("Ingresar"):
+        if username in USERS and USERS[username] == password:
+            st.session_state.authenticated = True
+            st.session_state.user = username
+            st.success("Acceso concedido")
+            st.rerun()
+        else:
+            st.error("Usuario o contraseña incorrectos")
+
+    st.stop()  # 🔴 Detiene aquí la app si no está logueado
 
 # ================= ETAPA 1: IDENTIFICACIÓN =================
 
