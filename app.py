@@ -31,6 +31,7 @@ with col_title:
 
 st.divider()
 
+st.caption(f"Usuario autenticado: {st.session_state.user}")
 # ================= DATA =================
 
 CONTACT_REASONS = [
