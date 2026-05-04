@@ -2,6 +2,9 @@ import streamlit as st
 import random
 import pandas as pd
 from datetime import datetime
+from zoneinfo import ZoneInfo
+
+PERU_TZ = ZoneInfo("America/Lima")
 
 
 # ================= LOGIN =================
@@ -232,7 +235,7 @@ if st.session_state.step == "IDENTIFICATION":
             )
             st.session_state.current_question = 0
             st.session_state.answers = []
-            st.session_state.timestamp = datetime.now()
+            st.session_state.timestamp = datetime.now(PERU_TZ)
             st.session_state.step = "VALIDATION"
             st.rerun()
 
