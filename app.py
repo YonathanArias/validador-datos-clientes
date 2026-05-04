@@ -31,7 +31,6 @@ with col_title:
 
 st.divider()
 
-st.caption(f"Usuario autenticado: {st.session_state.user}")
 # ================= DATA =================
 
 CONTACT_REASONS = [
@@ -186,6 +185,8 @@ if not st.session_state.authenticated:
             st.error("Usuario o contraseña incorrectos")
 
     st.stop()  # 🔴 Detiene aquí la app si no está logueado
+
+st.caption(f"Usuario autenticado: {st.session_state.user}")
 
 # ================= ETAPA 1: IDENTIFICACIÓN =================
 
